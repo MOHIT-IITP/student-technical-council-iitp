@@ -2,7 +2,7 @@
 
 import type React from "react"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
@@ -14,6 +14,8 @@ export function Navigation() {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
   const [isMounted, setIsMounted] = useState(false)
   const pathname = usePathname()
+  const wingsButtonRef = useRef<HTMLButtonElement | null>(null)
+  const wingsDropdownRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
     setIsMounted(true)
@@ -24,6 +26,7 @@ export function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  // Dropdown now uses click effect only, no hover effect
   const navItems = [
     { href: "/", label: "Home" },
     {
@@ -34,6 +37,8 @@ export function Navigation() {
         { href: "/wings/arthniti", label: "ARTHNITI" },
         { href: "/wings/tatva", label: "TATVA" },
       ],
+      // Add a flag to indicate click-activated dropdown
+      clickDropdown: true,
     },
     { href: "/team", label: "Our Team" },
     { href: "/events", label: "Events" },
@@ -76,6 +81,25 @@ export function Navigation() {
     return pathname === "/" && window.location.hash === "#notices"
   }
 
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    if (!activeDropdown) return;
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        wingsButtonRef.current &&
+        wingsDropdownRef.current &&
+        !wingsButtonRef.current.contains(event.target as Node) &&
+        !wingsDropdownRef.current.contains(event.target as Node)
+      ) {
+        setActiveDropdown(null);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [activeDropdown]);
+
   return (
     <nav
       className={`sticky top-0 w-full z-40 transition-all duration-300 ${
@@ -105,60 +129,65 @@ export function Navigation() {
         {navItems.map((item) => (
           <div key={item.href} className="relative flex items-center">
           {item.dropdown ? (
-          <div
-          className="relative"
-          onMouseEnter={() => setActiveDropdown(item.href)}
-          onMouseLeave={() => setActiveDropdown(null)}
-          >
-          <button
-            className={`flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-all duration-200 whitespace-nowrap ${
-            pathname.startsWith(item.href)
-            ? "text-[#453CD5] bg-[#453CD5]/10"
-            : "text-gray-700 hover:text-[#453CD5] hover:bg-[#453CD5]/10"
-            }`}
-          >
-            {item.label}
-            <ChevronDown className="w-4 h-4 ml-1 text-[#453CD5]" />
-          </button>
-          {activeDropdown === item.href && (
-            <div className="absolute top-full left-0 mt-1 w-48 bg-white rounded-lg shadow-lg border border-[#453CD5]/20 py-2 z-50">
-            {item.dropdown.map((dropdownItem) => (
-            <Link
-            key={dropdownItem.href}
-            href={dropdownItem.href}
-            className="block px-4 py-2 text-sm text-gray-700 hover:bg-[#453CD5]/10 hover:text-[#453CD5] transition-colors"
-            >
-            {dropdownItem.label}
-            </Link>
-            ))}
+            <div className="relative">
+              <button
+                ref={item.href === "/wings" ? wingsButtonRef : undefined}
+                onClick={() =>
+                  setActiveDropdown(
+                    activeDropdown === item.href ? null : item.href
+                  )
+                }
+                className={`flex items-center px-4 py-3 text-sm font-medium rounded-lg transition-all duration-200 whitespace-nowrap ${
+                  (pathname.startsWith(item.href) || (item.href === "/wings" && activeDropdown === "/wings"))
+                    ? "text-[#453CD5] bg-[#453CD5]/10"
+                    : "text-gray-700"
+                }`}
+              >
+                {item.label}
+                <ChevronDown className="w-4 h-4 ml-1 text-[#453CD5]" />
+              </button>
+              {activeDropdown === item.href && (
+                <div
+                  ref={item.href === "/wings" ? wingsDropdownRef : undefined}
+                  className="absolute top-full left-0 mt-1 w-48 bg-white rounded-lg shadow-lg border border-[#453CD5]/20 py-2 z-50"
+                >
+                  {item.dropdown.map((dropdownItem) => (
+                    <Link
+                      key={dropdownItem.href}
+                      href={dropdownItem.href}
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-[#453CD5]/10 hover:text-[#453CD5] transition-colors"
+                    >
+                      {dropdownItem.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
             </div>
-          )}
-          </div>
           ) : item.label === "Notices" ? (
-          <button
-          onClick={handleNoticesClick}
-          className={`relative px-4 py-3 text-sm font-medium rounded-lg transition-all duration-200 whitespace-nowrap ${
-            isNoticesActive()
-            ? "text-[#453CD5] bg-[#453CD5]/10"
-            : "text-gray-700 hover:text-[#453CD5] hover:bg-[#453CD5]/10"
-          }`}
-          >
-          {item.label}
-          </button>
+            <button
+              onClick={handleNoticesClick}
+              className={`relative px-4 py-3 text-sm font-medium rounded-lg transition-all duration-200 whitespace-nowrap ${
+                isNoticesActive()
+                  ? "text-[#453CD5] bg-[#453CD5]/10"
+                  : "text-gray-700 hover:text-[#453CD5] hover:bg-[#453CD5]/10"
+              }`}
+            >
+              {item.label}
+            </button>
           ) : (
-          <Link
-          href={item.href}
-          className={`relative px-4 py-3 text-sm font-medium rounded-lg transition-all duration-200 whitespace-nowrap ${
-            pathname === item.href
-            ? "text-[#453CD5] bg-[#453CD5]/10"
-            : "text-gray-700 hover:text-[#453CD5] hover:bg-[#453CD5]/10"
-          }`}
-          >
-          {item.label}
-          {pathname === item.href && (
-            <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-[#453CD5] rounded-full"></div>
-          )}
-          </Link>
+            <Link
+              href={item.href}
+              className={`relative px-4 py-3 text-sm font-medium rounded-lg transition-all duration-200 whitespace-nowrap ${
+                pathname === item.href
+                  ? "text-[#453CD5] bg-[#453CD5]/10"
+                  : "text-gray-700 hover:text-[#453CD5] hover:bg-[#453CD5]/10"
+              }`}
+            >
+              {item.label}
+              {pathname === item.href && (
+                <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-[#453CD5] rounded-full"></div>
+              )}
+            </Link>
           )}
           </div>
         ))}

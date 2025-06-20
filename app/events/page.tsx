@@ -236,16 +236,6 @@ export default function EventsPage() {
             </div>
           </div>
 
-          {/* Company Logos */}
-          <div className="mb-16">
-            <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">Participating Companies</h3>
-            <img
-              src="/images/company-logos.jpg"
-              alt="Participating Companies"
-              className="w-full rounded-xl shadow-lg mb-8"
-            />
-          </div>
-
           {/* Companies List */}
           <div>
             <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">Company Details</h3>
