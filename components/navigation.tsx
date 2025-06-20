@@ -93,7 +93,7 @@ export function Navigation() {
           <h1 className="text-xl font-bold text-[#453CD5] group-hover:text-blue-600 transition-colors leading-tight">
           Student Technical Council
           </h1>
-          <p className="text-sm text-[#453CD5] font-medium leading-tight">IIT Patna</p>
+          <p className="text-sm text-[#453CD5] font-medium leading-tight">IIT Patna Hybrid Programs</p>
         </div>
         </Link>
 
