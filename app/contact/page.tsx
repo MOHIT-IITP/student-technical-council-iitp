@@ -143,7 +143,7 @@ export default function ContactPage() {
                   <CardContent className="p-4">
                     <h4 className="font-semibold text-gray-900 mb-2">For Industry</h4>
                     <p className="text-sm text-gray-600 mb-2">Partnership and collaboration opportunities</p>
-                    <a href="mailto:industry@iitp.ac.in" className="text-green-600 text-sm hover:underline">
+                    <a href="mailto:techclubiitp@iitp.ac.in" className="text-green-600 text-sm hover:underline">
                       techclubiitp@iitp.ac.in
                     </a>
                   </CardContent>

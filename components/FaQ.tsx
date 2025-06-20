@@ -25,7 +25,7 @@ availability.</p>
                 <h3 className="text-xl font-semibold mb-2">How can companies collaborate with Student Technical Council?</h3>
                 <p className="text-gray-500">
                     Companies can partner with us for recruitment, workshops, mentorship programs, and sponsorships.
-Contact our industry relations team at industry@iitp.ac.in for collaboration opportunities.
+Contact our industry relations team at disha@iitp.ac.in for collaboration opportunities.
                 </p>
                 </div>
                 <div className="bg-white p-6 rounded-lg border-2 border-gray-200 ">
