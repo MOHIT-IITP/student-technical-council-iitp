@@ -1094,6 +1094,12 @@ video {
 .mr-\[1vw\] {
   margin-right: 1vw;
 }
+.-mt-2 {
+  margin-top: -0.5rem;
+}
+.mt-0 {
+  margin-top: 0px;
+}
 .line-clamp-2 {
   overflow: hidden;
   display: -webkit-box;
