@@ -4,7 +4,7 @@ import Link from "next/link"
 
 const coreTeam = [
   {
-    name: "Gautam Kumar Kashyap",
+    name: "Gautam Kumar",
     designation: "President",
     department: "Technology Club",
     image: "/placeholder.svg?height=300&width=300",

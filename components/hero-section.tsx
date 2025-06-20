@@ -114,9 +114,9 @@ export function HeroSection() {
       {/* Quick Info Cards */}
       <div className="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
         {[
-        { label: "Active Wings", value: "3", icon: "🎯" },
-        { label: "Sub-Clubs", value: "24+", icon: "🏢" },
-        { label: "Launch Year", value: "2025", icon: "🚀" },
+        { label: "Active Wings", value: "3", icon: "" },
+        { label: "Sub-Clubs", value: "24+", icon: "" },
+        { label: "Launch Year", value: "2025", icon: "" },
         ].map((stat, index) => (
         <div
           key={index}
