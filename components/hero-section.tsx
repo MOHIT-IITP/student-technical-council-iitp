@@ -90,7 +90,7 @@ export function HeroSection() {
 				<h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-3 sm:mb-4 bg-gradient-to-r from-gray-800 via-[#453CD5] to-gray-800 bg-clip-text text-transparent">
 					Student  Technical Council 
 				</h1>
-				<h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium mb-3 sm:mb-4 text-[#453CD5]">IIT Patna</h2>
+				<h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium mb-3 sm:mb-4 text-[#453CD5]">IIT Patna Hybrid Programs</h2>
 				<p className="text-lg sm:text-2xl md:text-3xl lg:text-4xl mb-6 sm:mb-8 font-semibold bg-gradient-to-r from-black via-[#453CD5] to-black bg-clip-text text-transparent">
 					Empowering Students Through Innovation
 				</p>
