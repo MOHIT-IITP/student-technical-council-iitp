@@ -21,7 +21,7 @@ const coreTeam = [
   },
   {
     name: "Ritu Raj",
-    designation: "Co-General Secretary",
+    designation: "General Secretary",
     department: "Technology Club",
     image: "/placeholder.svg?height=300&width=300",
     email: "ritu.raj@iitp.ac.in",
