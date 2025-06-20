@@ -20,19 +20,19 @@ const coreTeam = [
     linkedin: "#",
   },
   {
-    name: "Hridyanand Gupta",
-    designation: "Tresurer",
-    department: "Technology Club",
-    image: "/placeholder.svg?height=300&width=300",
-    email: "hridyanand.gupta@iitp.ac.in",
-    linkedin: "#",
-  },
-  {
     name: "Ritu Raj",
     designation: "Co-General Secretary",
     department: "Technology Club",
     image: "/placeholder.svg?height=300&width=300",
     email: "ritu.raj@iitp.ac.in",
+    linkedin: "#",
+  },
+  {
+    name: "Hridyanand Gupta",
+    designation: "Tresurer",
+    department: "Technology Club",
+    image: "/placeholder.svg?height=300&width=300",
+    email: "hridyanand.gupta@iitp.ac.in",
     linkedin: "#",
   },
 ]

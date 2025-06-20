@@ -1,3 +1,8 @@
 {
+<<<<<<< HEAD
+  "/page": "app/page.js",
+  "/team/page": "app/team/page.js"
+=======
   "/page": "app/page.js"
+>>>>>>> parent of 0bd6d972 (update)
 }
