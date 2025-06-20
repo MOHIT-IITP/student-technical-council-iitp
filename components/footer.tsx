@@ -70,10 +70,6 @@ export function Footer() {
                 <span className="text-gray-300 text-sm">IIT Patna, Bihta, Patna - 801106</span>
               </div>
               <div className="flex items-center space-x-3">
-                <Phone className="w-4 h-4 text-blue-400" />
-                <span className="text-gray-300 text-sm">+91-612-302-8000</span>
-              </div>
-              <div className="flex items-center space-x-3">
                 <Mail className="w-4 h-4 text-blue-400" />
                 <span className="text-gray-300 text-sm">stc.iit_patna@iitp.ac.in</span>
               </div>
