@@ -41,7 +41,7 @@ export function Navigation() {
   ]
 
   // Move dropdown a bit upper by adjusting mt-1 to mt-0 or negative margin
-  const dropdownMenuClass = "absolute top-full left-0 -mt-2 w-48 bg-white rounded-lg shadow-lg border border-[#453CD5]/20 py-2 z-50"
+  const dropdownMenuClass = "absolute top-full left-0 -mt-10 w-48 bg-white rounded-lg shadow-lg border border-[#453CD5]/20 py-2 z-50"
 
   // Add click support for dropdowns
   const handleDropdownToggle = (href: string) => {
